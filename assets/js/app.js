@@ -27,5 +27,32 @@ const personajes = [
 ];
 
 const rowcontainer = document.querySelector("#row-container");
-const eliminar = document.querySelector("#eliminarlaneta")
+const eliminar = document.querySelector("#eliminarlaneta");
+const verPersonajes = document.querySelector("#verPersonajes");
+
+verPersonajes.addEventListener("click", () => {
+    cargarHeroes(personajes)
+}
+)
+
+const cargarHeroes = (heroes) => {
+   
+    heroes.forEach(heroe => {
+        rowcontainer.innerHTML += `
+        <div class="col-3 my-2">
+        <div class="card" style="width: 18rem">
+          <img src=${heroe.imagen} 
+          alt="" class="top-card" />
+
+          <div class="card-body">
+            <h5 class="card-title">${heroe.nombre}</h5>
+        
+            <button class="btn btn-danger">Eliminar</button>
+          </div>
+        </div>
+      </div>
+        `
+         
+    });
+}
 
