@@ -14,16 +14,16 @@
   </head>
   <body>
     <main class="container text-center">
-      <form action="#" class="d-flex gap-3 text-center formulario">
+      <form action="#" class="d-flex gap-3 text-center" id="formulario">
         <label for="nombre">Nombre</label>
-        <input type="text" />
+        <input type="text" name="nombre" />
 
-        <label for="#">Imagen (URL)</label>
-        <input type="url" />
+        <label for="imagen">Imagen (URL)</label>
+        <input type="url" name="imagen" />
+
+        <button class="btn btn-primary">Crear héroe</button>
       </form>
-      <br />
-      <button class="btn btn-primary">Crear héroe</button>
-      <br />
+
       <button class="btn btn-success mt-2" id="verPersonajes">
         Ver Héroes
       </button>
