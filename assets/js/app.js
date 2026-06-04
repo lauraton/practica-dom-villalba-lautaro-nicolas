@@ -60,6 +60,8 @@ const rowcontainer = document.querySelector("#row-container");
 const eliminar = document.querySelector("#eliminarlaneta");
 const verPersonajes = document.querySelector("#verPersonajes");
 const formulario = document.querySelector("#formulario")
+const buscarNombre = document.querySelector("#buscarNombre");
+const btnBuscar = document.querySelector("#btnBuscar");
 
 verPersonajes.addEventListener("click", () => {
     cargarHeroes(copiaPersonajes)
@@ -67,23 +69,25 @@ verPersonajes.addEventListener("click", () => {
 )
 
 const cargarHeroes = (heroes) => {
-   
+
+    rowcontainer.innerHTML = "";
+
     heroes.forEach(heroe => {
         rowcontainer.innerHTML += `
-        <div class="col-3 my-2" data-id=${heroe.id}>
-        <div class="card" id="carta" style="width: 18rem">
-          <img src=${heroe.imagen} 
-          alt="" class="top-card" />
+        <div class="col-3 my-2" data-id="${heroe.id}">
+            <div class="card" style="width: 18rem">
+                <img src="${heroe.imagen}" alt="" class="top-card" />
 
-          <div class="card-body">
-            <h5 class="card-title">${heroe.nombre}</h5>
-        
-            <button class="btn btn-danger eliminar-boton">Eliminar</button>
-          </div>
+                <div class="card-body">
+                    <h5 class="card-title">${heroe.nombre}</h5>
+
+                    <button class="btn btn-danger eliminar-boton">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-        `
-         
+        `;
     });
 }
 
@@ -123,4 +127,16 @@ formulario.addEventListener("submit", (e) => {
     cargarHeroes(copiaPersonajes);
 
     formulario.reset();
+});
+
+btnBuscar.addEventListener("click", () => {
+
+    const texto = buscarNombre.value.toLowerCase();
+
+    const filtrados = copiaPersonajes.filter(heroe => {
+        return heroe.nombre.toLowerCase().includes(texto);
+    });
+
+    cargarHeroes(filtrados);
+
 });
